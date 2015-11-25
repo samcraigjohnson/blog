@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    flex-flow: row;
+}
+
+.logo {
+    width: 200px;
+    height: 100px;
+    background: black;
+}
+
+.menu-items {
+    order: 1;
+}
