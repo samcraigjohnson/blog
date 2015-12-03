@@ -1,0 +1,17 @@
+* Todos for blog
+
+** TODO Pick a font
+   - Paragraph: https://www.google.com/fonts/specimen/Lora
+   - Heading: https://www.google.com/fonts/specimen/Cardo
+
+** TODO Sketch up a design
+
+** TODO Ask allison to make me a logo
+
+** TODO Write a blog post
+
+** TODO Build Makefile that translates org files into blog posts
+
+** TODO Deploy on digital ocean
+
+** TODO Add Google analytics to your site
