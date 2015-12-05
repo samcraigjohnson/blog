@@ -1,14 +1,46 @@
+@import url(https://fonts.googleapis.com/css?family=Lora);
+@import url(https://fonts.googleapis.com/css?family=Cardo);
+
+p {
+    font-family: 'Lora', serif;
+}
+
+h1, h2, h3, h4, h5, a {
+    font-family: 'Cardo', serif;
+}
+
+/* Word header */
 .header {
     display: flex;
     flex-flow: row;
 }
 
-.logo {
-    width: 200px;
-    height: 100px;
-    background: black;
+.header h1 {
+    font-size: 62px;
+    letter-spacing: 8px;
+    margin-left: 50px;
 }
 
+
+/* Navigation links */
 .menu-items {
     order: 1;
+    align-self: center;
+    margin: 0 auto;
+}
+
+.menu-items a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.menu-items a:hover {
+    text-decoration: underline;
+    color: gray;
+}
+
+.post-container {
+    margin: 0 200px 0 100px;
 }
