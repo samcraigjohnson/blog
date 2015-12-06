@@ -19,15 +19,11 @@
       </div>
 
     </div>
-
+    {{ range $index, $fragment := . }}
     <div class="post-container">
-      <h2>My Post Title</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pellentesque lectus quis nunc imperdiet, quis venenatis dui mollis. Aliquam placerat tellus eget gravida vehicula. Duis tincidunt felis vitae enim eleifend, vitae vestibulum tellus euismod. Vivamus ac velit convallis, finibus lacus vel, aliquam nisi. Maecenas euismod semper pretium. Maecenas iaculis tellus ut quam tempor tempor. Donec facilisis, nulla quis pretium varius, velit sem luctus ante, vel tempor velit urna at est.<br/><br/>
-
-In ornare massa vitae pretium rhoncus. Suspendisse vulputate orci non tristique porttitor. Maecenas erat est, dictum in dui luctus, cursus dictum enim. Fusce fringilla varius est, vel tempor augue placerat ac. Nam sodales neque id ligula sodales maximus id a ex. Fusce vitae mi ut ante venenatis vestibulum. Donec condimentum interdum metus non gravida. Nulla imperdiet in magna in pretium.<br/><br/>
-
-        Fusce fermentum orci vitae dui facilisis semper. Vestibulum vitae dolor efficitur, varius nisi quis, maximus elit. Proin pretium, metus sit amet accumsan posuere, neque nibh feugiat neque, nec ornare erat diam hendrerit libero. Proin nec sapien porttitor ipsum semper porttitor vitae in nibh. Suspendisse imperdiet pellentesque suscipit. In sed dolor quam. Donec nec nisi ligula. Maecenas scelerisque, arcu in tempus tempor, justo enim maximus nulla, non tempor lectus dui sagittis.</p>
+      {{ $fragment }}
     </div>
+    {{ end }}
 
   </body>
 </html>
