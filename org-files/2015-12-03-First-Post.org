@@ -1,6 +1,6 @@
 * Origins
 
-I got into computers in the 6th grade when my mom signed me up for a class teaching Pascal. Turbo Pascal to be exact. The first program that I wrote -- besides the obligatory "Hello World" one -- was a lemonade stand. It worked by printing a few options to the console, the user choosing to buy lemonade or a cookie, and then adding their money to my virtual bank account balance. The user did not end up with lemonade delivered via Uber or anything so sophisticated but I loved it.
+I got into computers in the 6th grade when my mom signed me up for a class teaching Pascal. Turbo Pascal to be exact. The first program that I wrote -- besides the obligatory =Hello World= one -- was a lemonade stand. It worked by printing a few options to the console, the user choosing to buy lemonade or a cookie, and then adding their money to my virtual bank account balance. The user did not end up with lemonade delivered via Uber or anything so sophisticated but I loved it.
 
 Throughout my youth, I continued learning as much as I could and was very fortunate to have the support of my computer savvy mother to encourage me. She even convinced the high school computer teacher to give me one-on-one tutoring once the Pascal class had ended. Computer programming quickly became my creative outlet as well as my sole career pursuit. I learned Java in High School, went on to get a degree in Computer Science at Colorado College, and joined Cisco Systems as a software engineer my first year out of college.
 
