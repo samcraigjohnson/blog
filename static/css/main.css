@@ -41,6 +41,11 @@ h1, h2, h3, h4, h5, a {
     color: gray;
 }
 
+/* Blog post stylings */
 .post-container {
     margin: 0 350px 0 200px;
+}
+
+.post-container p {
+    line-height: 25px;
 }
