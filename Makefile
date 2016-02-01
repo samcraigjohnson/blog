@@ -16,5 +16,5 @@ convert:
 	# Convert org-mode files into html fragments
 	for file in $(shell find org-files/ -name "*.org"); do \
 		f=$$(basename $$file .org).html; \
-		pandoc -o fragments/$$f $$file; \
+		pandoc -s -o fragments/$$f $$file; \
 	done
