@@ -30,11 +30,12 @@ func posts() (*[]template.HTML, error) {
 	posts := make([]template.HTML, len(files))
 	for i, file := range files {
 		data, _ := ioutil.ReadFile(dir + "/" + file.Name())
-		p := template.HTML(data)
-		posts[i] = p
+		p := NewPost(string(data), file.Name())
+		posts[i] = p.ToIndexHTML()
 	}
 	return &posts, nil
 }
+
 
 // Load an html template from a rice box
 func LoadTemplate(name string, box *rice.Box) *template.Template {
