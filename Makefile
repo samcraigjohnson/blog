@@ -7,7 +7,7 @@ build: blog.go
 
 clean:
 	go clean
-	rm fragments/*.html
+	rm -f fragments/*.html
 
 install: convert build
 	go install

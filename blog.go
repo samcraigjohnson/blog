@@ -9,14 +9,16 @@ import (
 	"net/http"
 )
 
-const STATIC_BOX string = "static"
+const (
+	STATIC_BOX string = "static"
+)
 
 func indexHandler(box *rice.Box) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		posts, _ := posts()
 		log.Printf("Posts: %v", posts)
-		t, _ := LoadTemplate("index", box)
-		t.Execute(w, posts)
+		t := LoadTemplate("index", box)
+		t.ExecuteTemplate(w, "base", posts)
 	}
 }
 
@@ -35,14 +37,37 @@ func posts() (*[]template.HTML, error) {
 }
 
 // Load an html template from a rice box
-func LoadTemplate(name string, box *rice.Box) (*template.Template, error) {
+func LoadTemplate(name string, box *rice.Box) *template.Template {
+	base := templateString("base", box)
+	content := templateString(name, box)
+	log.Printf("Content of content: %v", content)
+	log.Printf("Content of base: %v", base)
+
+	t := template.New(name)
+	t = parseString(t, base)
+	t = parseString(t, content)
+	log.Printf("Template: %v", t)
+	return t
+}
+
+// Get a template string from a rice box
+func templateString(name string, box *rice.Box) string {
 	tName := fmt.Sprintf("%s.html", name)
 	tString, err := box.String(tName)
 	if err != nil {
-		return nil, err
+		log.Printf("Error getting template string: %v", err)
 	}
-	return template.New(name).Parse(tString)
+	return tString
 }
+
+func parseString(t *template.Template, s string) (*template.Template) {
+	new, err := t.Parse(s)
+	if err != nil {
+		log.Printf("Error parsing string: %v", err)
+	}
+	return new
+}
+
 
 func main() {
 	// Web pages
