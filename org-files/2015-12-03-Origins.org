@@ -1,5 +1,10 @@
 #+TITLE: Origins
+#+AUTHOR: Sam Johnson
+#+EMAIL: sjohnson540@gmail.com
 #+DATE: 2015-12-03
+
+* Origins 
+<small>2015-12-03</small>
 
 I got into computers in the 6th grade when my mom signed me up for a class teaching Pascal. Turbo Pascal to be exact. The first program that I wrote -- besides the obligatory =Hello World= one -- was a lemonade stand. It worked by printing a few options to the console, the user choosing to buy lemonade or a cookie, and then adding their money to my virtual bank account balance. The user did not end up with lemonade delivered via Uber or anything so sophisticated but I loved it.
 
