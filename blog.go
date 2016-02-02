@@ -11,6 +11,7 @@ import (
 
 const (
 	STATIC_BOX string = "static"
+	BLOG_DIR string = "./fragments"
 )
 
 func indexHandler(box *rice.Box) http.HandlerFunc {
@@ -22,20 +23,27 @@ func indexHandler(box *rice.Box) http.HandlerFunc {
 	}
 }
 
+func postHandler(box *rice.Box) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("Path: %v", r.URL.Path)
+	}
+}
+
 // Read all the HTML post fragments and return them as Posts
 func posts() (*[]template.HTML, error) {
-	dir := "./fragments"
-	files, _ := ioutil.ReadDir(dir)
+	files, _ := ioutil.ReadDir(BLOG_DIR)
 
 	posts := make([]template.HTML, len(files))
 	for i, file := range files {
-		data, _ := ioutil.ReadFile(dir + "/" + file.Name())
-		p := NewPost(string(data), file.Name())
+		p := NewPost(postLocation(file.Name()))
 		posts[i] = p.ToIndexHTML()
 	}
 	return &posts, nil
 }
 
+func postLocation(name string) string {
+	return fmt.Sprintf("%s/%s", BLOG_DIR, name)
+}
 
 // Load an html template from a rice box
 func LoadTemplate(name string, box *rice.Box) *template.Template {
@@ -74,6 +82,7 @@ func main() {
 	// Web pages
 	box := rice.MustFindBox("static")
 	http.HandleFunc("/", indexHandler(box))
+	http.HandleFunc("/posts/", postHandler(box))
 
 	// Static files
 	staticFiles := http.StripPrefix("/static/", http.FileServer(box.HTTPBox()))

@@ -3,6 +3,7 @@ package main
 import (
 	"html/template"
 	"fmt"
+	"io/ioutil"
 //	"regexp"
 )
 
@@ -12,10 +13,11 @@ type Post struct {
 	Link string
 }
 
-func NewPost(data string, fileLocation string) *Post {
+func NewPost(fileLocation string) *Post {
 	//	r := regexp.Compile("<p>[.]*</p>")
+	data, _ := ioutil.ReadFile(fileLocation)
 	link := fmt.Sprintf("<a href=\"%s\">%s</a>", fileLocation, "read more")
-	return &Post{Content: data, Link: link}
+	return &Post{Content: string(data), Link: link}
 }
 
 func (p *Post) ToIndexHTML() template.HTML {
@@ -23,7 +25,7 @@ func (p *Post) ToIndexHTML() template.HTML {
 	return template.HTML(html)
 }
 
-// Shorten the post for the hompage by only showing
+// Shorten the post for the homepage by only showing
 // the first paragraph
 func (p *Post) shorten() {
 	
