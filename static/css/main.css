@@ -1,13 +1,20 @@
-@import url(https://fonts.googleapis.com/css?family=Lora);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
 @import url(https://fonts.googleapis.com/css?family=Cardo);
 
 p {
-    font-family: 'Lora', serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 h1, h2, h3, h4, h5, a {
     font-family: 'Cardo', serif;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
 
 /* Word header */
 .header {
@@ -19,6 +26,19 @@ h1, h2, h3, h4, h5, a {
     font-size: 62px;
     letter-spacing: 8px;
     margin-left: 50px;
+}
+
+.header h1 a {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* Subheader */
+.subheader {
+    margin-left: 50px;
+    margin-top: -60px;
+    padding-bottom: 10px;
 }
 
 
@@ -48,4 +68,29 @@ h1, h2, h3, h4, h5, a {
 
 .post-container p {
     line-height: 25px;
+}
+
+.title {
+    margin-bottom: -15px;
+}
+
+/* Footer */
+.footer {
+    height: 150px;
+    background: #D9d9d9;
+    margin-top: 45px;
+    border-top: 1px solid rgb(183, 183, 183);
+    text-align: right;
+}
+
+.footer p {
+    margin-right: 10px;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.footer .icon {
+    width: 20px;
 }

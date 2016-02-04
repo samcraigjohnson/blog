@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"html/template"
 	"io/ioutil"
-	"log"
 	"regexp"
+	"strings"
 )
 
 type Post struct {
@@ -20,8 +20,8 @@ type Post struct {
 // stored at fileLocation
 func NewPost(fileLocation string) *Post {
 	data, _ := ioutil.ReadFile(fileLocation)
-	location := "/posts/" + fileLocation
-	link := fmt.Sprintf("<a href=\"%s\">%s</a>", location, "read more")
+	location := "/posts/" + strings.Split(fileLocation, "/")[2]
+	link := fmt.Sprintf("<a href=\"%s\">%s</a>", location, "...read more")
 	html := string(data)
 	return &Post{
 		Content: html,
@@ -46,7 +46,6 @@ func (p *Post) ToHTML() template.HTML {
 // Find the first HTML tag matching `tag` in an HTML string
 func FindTag(tag string, html string) string {
 	regex := fmt.Sprintf("<%s( class=.*)?( id=.*)?>.*</%s>", tag, tag)
-	log.Printf("Regex: %v", regex)
 	r, _ := regexp.Compile(regex)
 	return r.FindString(html)
 }

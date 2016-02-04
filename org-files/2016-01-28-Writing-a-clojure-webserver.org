@@ -1,5 +1,10 @@
-#+TITLE: Reading/Writing from a socket in Clojure
+#+TITLE: Reading/writing from a socket in Clojure
 #+DATE: 2016-01-28
 
 I have been wanting to learn Clojure so I decided on the fun journey of writing a web server in Clojure. It seemed like a good way for me to get acquainted with all the fun parts of Clojure (Functional Programming, Immutability, Concurrency) and also learn more about my current field -- web development. For this post I am going to focus on just reading and writing from a socket, which is fun in it self! I got a head start on the basics for this by reading a [[https://github.com/clojure-cookbook/clojure-cookbook/blob/master/05_network-io/5-10_tcp-server.asciidoc][helpful TCP intro]].
 
+#+BEGIN_SRC clojure
+  (defn slurp-socket []
+    "whatever whatever")
+
+#+END_SRC
