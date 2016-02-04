@@ -26,6 +26,9 @@ func indexHandler(box *rice.Box) http.HandlerFunc {
 func postHandler(box *rice.Box) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Path: %v", r.URL.Path)
+		post := NewPost(postLocation(r.URL.Path))
+		t := LoadTemplate("post", box)
+		t.ExecuteTemplate(w, "base", post.ToHTML())
 	}
 }
 

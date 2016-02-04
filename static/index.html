@@ -1,16 +1,4 @@
 {{ define "body" }}
-    <div class="header">
-
-      <h1>Artisan Coding</h1>
-
-      <!-- Menu items -->
-      <div class="menu-items">
-        <a href="blog">Blog</a>
-        <a href="about">About</a>
-        <a href="resume">Resume</a>
-      </div>
-
-    </div>
     {{ range $index, $fragment := . }}
     <div class="post-container">
       {{ $fragment }}

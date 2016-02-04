@@ -6,6 +6,20 @@
     <title>Artisan Coding</title>
     <link rel="stylesheet" href="static/css/main.css" />
   </head>
-  <body> {{ template "body" . }} </body>
+  <body>
+    <div class="header">
+      <h1>Artisan Coding</h1>
+      <h3>My thoughts while learning new things about programming</h3>
+      <h4>Currently learning Clojure through building a webserver that is RFC7230 compliant!</h4>
+
+      <!-- Menu items -->
+      <div class="menu-items">
+        <a href="blog">Blog</a>
+        <a href="about">About</a>
+        <a href="resume">Resume</a>
+      </div>
+    </div>
+    {{ template "body" . }}
+  </body>
 </html>
 {{ end }}
