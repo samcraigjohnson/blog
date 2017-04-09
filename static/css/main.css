@@ -94,3 +94,10 @@ body {
 .footer .icon {
     width: 20px;
 }
+
+/* Code blocks */
+div.sourceCode {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    margin: 0 30px 10px 30px;
+}

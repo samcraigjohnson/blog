@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"sort"
 	"strings"
 
 	"github.com/GeertJohan/go.rice"
@@ -18,6 +19,7 @@ const (
 
 func indexHandler(box *rice.Box) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		log.Println("Request for index /")
 		posts, _ := posts()
 		t := LoadTemplate("index", box)
 		t.ExecuteTemplate(w, "base", posts)
@@ -26,6 +28,7 @@ func indexHandler(box *rice.Box) http.HandlerFunc {
 
 func postHandler(box *rice.Box) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		log.Println("Reqest for posts /posts")
 		fileLocation := strings.Split(r.URL.Path, "/")[2]
 		post := NewPost(postLocation(fileLocation))
 		t := LoadTemplate("post", box)
@@ -37,12 +40,20 @@ func postHandler(box *rice.Box) http.HandlerFunc {
 func posts() (*[]template.HTML, error) {
 	files, _ := ioutil.ReadDir(BLOG_DIR)
 
-	posts := make([]template.HTML, len(files))
+	// Create posts and sort by date
+	posts := make([]Post, len(files))
 	for i, file := range files {
-		p := NewPost(postLocation(file.Name()))
-		posts[i] = p.ToIndexHTML()
+		posts[i] = NewPost(postLocation(file.Name()))
 	}
-	return &posts, nil
+	sort.Sort(ByDate(posts))
+
+	// Create HTML from posts
+	postTemplates := make([]template.HTML, len(files))
+	for i, p := range posts {
+		postTemplates[i] = p.ToIndexHTML()
+	}
+
+	return &postTemplates, nil
 }
 
 func postLocation(name string) string {
@@ -88,5 +99,6 @@ func main() {
 	staticFiles := http.StripPrefix("/static/", http.FileServer(box.HTTPBox()))
 	http.Handle("/static/", staticFiles)
 
-	http.ListenAndServe(":8080", nil)
+	log.Println("Listening on port 8080...")
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }

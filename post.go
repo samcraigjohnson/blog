@@ -16,14 +16,20 @@ type Post struct {
 	Date    string
 }
 
+type ByDate []Post
+
+func (a ByDate) Len() int           { return len(a) }
+func (a ByDate) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a ByDate) Less(i, j int) bool { return a[i].Date > a[j].Date }
+
 // Create a new post struct from an html file
 // stored at fileLocation
-func NewPost(fileLocation string) *Post {
+func NewPost(fileLocation string) Post {
 	data, _ := ioutil.ReadFile(fileLocation)
 	location := "/posts/" + strings.Split(fileLocation, "/")[2]
 	link := fmt.Sprintf("<a href=\"%s\">%s</a>", location, "...read more")
 	html := string(data)
-	return &Post{
+	return Post{
 		Content: html,
 		Link:    link,
 		Title:   FindTag("h1", html),
