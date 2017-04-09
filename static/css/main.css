@@ -88,11 +88,16 @@ body {
 }
 
 .footer a {
-    text-decoration: none;
+    margin-right: 10px;
 }
 
 .footer .icon {
     width: 20px;
+}
+
+.follow-wrapper {
+    margin-right: 10px;
+    margin-top: 10px;
 }
 
 /* Code blocks */
