@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"sort"
 	"strings"
 
@@ -99,6 +100,7 @@ func main() {
 	staticFiles := http.StripPrefix("/static/", http.FileServer(box.HTTPBox()))
 	http.Handle("/static/", staticFiles)
 
-	log.Println("Listening on port 8080...")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	port := os.Getenv("PORT")
+	log.Printf("Listening on port %v...", port)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }

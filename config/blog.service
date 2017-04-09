@@ -1,0 +1,10 @@
+[Unit]
+Description=sams blog
+
+[Service]
+Environment=PORT=80
+WorkingDirectory=/home/ubuntu
+ExecStart=/home/ubuntu/blog
+
+[Install]
+WantedBy=multi-user.target
